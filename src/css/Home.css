@@ -1,0 +1,158 @@
+.Home .contentWrapper{
+	max-width: 600px;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.Home .postWrapper{
+	
+}
+
+
+.Modal__Custom{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Modal__Custom > div{
+	background-color: var(--Ccard);
+	border-radius: 3px;
+	color: var(--Cprimary);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    width: 100%;
+}
+
+.Modal__Custom > div:focus{
+	outline: none;
+}
+
+.Modal__Custom #simple-modal-title,
+.Modal__Custom #simple-modal-subtitle,
+.Modal__Custom #simple-modal-description,
+.Modal__Custom .simple-modal-footer,
+.Modal__Custom .error{
+	margin: 1rem 2rem;
+}
+
+.Modal__Custom #simple-modal-title{
+	display: block;
+    margin: 1rem auto 0px auto;
+}
+
+.Modal__Custom #simple-modal-subtitle{
+	font-size: 15px;
+	color: var(--Csecondary);
+	text-align: center;
+}
+
+.Modal__Custom #simple-modal-description{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.Modal__Custom #simple-modal-description input{
+	font-size: 12px;
+	background-color: var(--Cbackground);
+	outline: none;
+	padding: 9px 0 7px 8px;
+    text-overflow: ellipsis;
+    color: var(--Cprimary);
+    border: 1px solid var(--Cborder);
+    border-radius: 3px;
+    margin-bottom: 6px;
+    width: 250px;
+}
+
+.Modal__Custom #simple-modal-description input:focus{
+	border: 1px solid #a8a8a8;
+}
+
+.Modal__Custom #simple-modal-description button,
+.Home .actionButton button{
+	margin-top: 8px;
+	border: 1px solid transparent;
+    background-color: #0095f6;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    font-weight: 600;
+    padding: 5px 9px;
+    text-align: center;
+    text-transform: inherit;
+    text-overflow: ellipsis;
+    color: var(--Ccard);
+}
+
+.Modal__Custom #simple-modal-description button.disable{
+	pointer-events: none;
+	opacity: .3;
+}
+
+.Modal__Custom #simple-modal-description button:focus{
+	outline: none;
+}
+
+.Modal__Custom #simple-modal-description .orDivider{
+	margin: 16px 0px 10px 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.Modal__Custom #simple-modal-description .orDivider .line{
+    background-color: var(--Cborder);
+    height: 1px;
+    width: 100%;
+}
+
+.Modal__Custom #simple-modal-description .orDivider .text{
+	color: var(--Csecondary);
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+    margin: 0 18px;
+    text-transform: uppercase;
+}
+
+.Modal__Custom .simple-modal-footer{
+	color: var(--Csecondary);
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.Modal__Custom .simple-modal-footer a{
+	color: #0095f6;
+}
+
+.Modal__Custom .error{
+	font-size: 14px;
+	color: #ed4956;
+	text-align: center;
+}
+
+.Home .actionButton{
+	width: 100%;
+    background-color: var(--Ccard);
+    border: 1px solid var(--Cborder);
+    border-radius: 3px;
+    margin: 0px 0px 2rem 0px;
+    padding: 1rem;
+    display: flex;
+}
+
+.Home .actionButton button{
+	display: inline-block;
+	width: 20%;
+	margin:0 auto;
+}

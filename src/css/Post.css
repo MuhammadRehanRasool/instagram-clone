@@ -1,0 +1,166 @@
+.Post{
+	width: 100%;
+	background-color: var(--Ccard);
+	border:1px solid var(--Cborder);
+	border-radius: 3px;
+	margin: 0px 0px 2rem 0px;
+}
+
+@media screen and (max-width: 600px) {
+  .Post {
+    border-left: 0px;
+    border-right: 0px;
+    margin: 0px;
+  }
+  .Home .contentWrapper{
+  	margin-top: 0px!important;
+  }
+  .Home .addComment{
+  	display: none!important;
+  }
+}
+
+.Post .header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.Post .header .header1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Post .header .header1 img{
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.Post .header .header1 .header1__wrapper{
+	margin-left: 14px;
+}
+
+.Post .header .header1 .header1__wrapper h1,
+.Post .header .header1 .header1__wrapper p{
+	color: var(--Cprimary)!important;
+	cursor: pointer;
+}
+
+.Post .header .header1 .header1__wrapper h1{
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.Post .header .header1 .header1__wrapper h1:hover{
+	text-decoration: underline;
+}
+
+.Post .header .header1 .header1__wrapper p{
+	font-size: 12px;
+}
+
+.Post .header .header2{
+	cursor: pointer;
+}
+
+.Post .image{
+	width: 100%;
+}
+
+.Post .image img{
+	width: 100%;
+}
+
+.Post .footer{
+	padding: .5rem 1rem;
+}
+
+.Post .footer .icons{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.Post .footer .icons svg{
+	margin: 0px 8px;
+	cursor: pointer;
+}
+
+.Post .info{
+	display: flex;
+	margin-top: 7px;
+}
+
+.Post .info .username,
+.Post .info p,
+.Post .seeMore{
+	color: var(--Cprimary);
+	font-size: 14px;
+}
+
+.Post .info .username{
+	font-weight: 600;
+	display: inline-block;
+}
+
+.Post .info .username:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.Post .info p{
+	max-width: 60%;
+	overflow-wrap: break-word;
+	/*max-height: 40px;
+    overflow-y: hidden;*/
+}
+
+.Post .info .hashtag{
+	text-decoration: underline;
+	color: var(--Cunderline);
+	cursor: pointer;
+}
+
+.Post .time{
+	font-size: 10px;
+	text-transform: uppercase;
+	color: var(--Csecondary);
+	font-weight: 500;
+	margin: 10px 0px;
+}
+
+
+.Post .addComment{
+	border-top: 1px solid #efefef;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 0px 10px 0px;
+}
+
+.Post .addComment svg{
+	width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.Post .addComment input{
+	background-color: transparent;
+	outline: none;
+	border: none;
+	padding-left: 20px;
+	height: 18px;
+	width: 100%;
+	color: var(--Cprimary);
+	font-size: 14px;
+}
+
+.Post .addComment a{
+	text-decoration: none;
+	color:#0095F6;
+	font-weight: 700;
+}

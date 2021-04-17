@@ -1,0 +1,14 @@
+.Navbar{
+	background-color: var(--Ccard);
+	width: 100%;
+	height: 54px;
+	border-bottom: 1px solid var(--Cborder);
+	display: flex;
+	padding: 0px 1rem;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.Navbar img{
+	margin-top: 5px;
+}
