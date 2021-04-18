@@ -159,7 +159,7 @@ function Home() {
 		}
       	<div className="postWrapper">
       		{
-      			(authUser)?(
+      			(!!user)?(
       				posts.map((post) => {
 	      				let currentUser = "";
 	      				if(!!user){
