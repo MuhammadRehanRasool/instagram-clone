@@ -34,7 +34,6 @@
 }
 
 .Comment .hashtag{
-	text-decoration: underline;
 	color: var(--Cunderline);
 	cursor: pointer;
 }

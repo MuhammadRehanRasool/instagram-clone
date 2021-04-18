@@ -51,7 +51,7 @@ export default function AddPost(props){
 					setLocation("");
 					setImage(null);
 					let image = document.getElementById('output-image');
-					image.src = "https://lh3.googleusercontent.com/proxy/cvncEsPLflt3jbDLh5D2Jd1Mzq5DGt9xVhq4qhg8pKXfmQAm7wvGVNJXf17sVzxz-tP8YEC2-UVDx_Wr3TnA53SteWlwAGE";
+					image.src = "/noImage.png";
 					props.setWannaPost(false);
 					document.getElementById("AddPostButton").innerText = "+ Add Post";
 					document.getElementById("AddPostButton").classList.remove("warning-bg");
@@ -78,10 +78,10 @@ export default function AddPost(props){
 						):""
 					}
 					<label htmlFor="file-upload" class="custom-file-upload">
-					    <img id="output-image" src="https://lh3.googleusercontent.com/proxy/cvncEsPLflt3jbDLh5D2Jd1Mzq5DGt9xVhq4qhg8pKXfmQAm7wvGVNJXf17sVzxz-tP8YEC2-UVDx_Wr3TnA53SteWlwAGE" alt="Upload"/>
+					    <img id="output-image" accept="image/*" src="/noImage.png" alt="Upload"/>
 					    <p>Change Image</p>
 					</label>
-					<button onClick={handleUpload}>Post</button>
+					<button onClick={handleUpload} className={(!image)?("disable"):("")}>Post</button>
 				</div>
 			</div>
 		</>

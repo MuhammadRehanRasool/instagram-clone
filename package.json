@@ -1,5 +1,6 @@
 {
   "name": "instagram-clone",
+  "developer":"Muhammad Rehan",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

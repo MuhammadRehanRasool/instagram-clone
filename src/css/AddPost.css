@@ -94,3 +94,8 @@
 	opacity: 1;
 	transition: 900ms;
 }
+
+.AddPost .inputWrapper button.disable{
+	pointer-events: none;
+	opacity: .3;
+}

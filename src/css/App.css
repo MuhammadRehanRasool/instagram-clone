@@ -1,5 +1,4 @@
 * {
-  /*--Ftext:'Segoe UI Regular';*/
   --Cbackground:#FAFAFA;
   --Ccard:#FFFFFF;
   --Cprimary:#262626;
@@ -9,6 +8,14 @@
   --Cborder:#dbdbdb;
   --Caccent:#0084FF;
   --Cunderline:#00376B;
+}
+
+.logoText{
+  font-family: 'Billabong';
+    font-weight: 500;
+    font-variant-ligatures: discretionary-ligatures;
+    font-size: 35px;
+    cursor: pointer;
 }
 
 .App{
@@ -26,19 +33,33 @@
   src: url(./../fonts/Segoe-UI.ttf);
 }
 
+@font-face {
+  font-family: 'Billabong';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./../fonts/FontsFree-Net-Billabong.ttf);
+}
+
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+html button,
+html input{
+  font-family: 'Segoe UI'!important;
+}
+
 html {
   background-color: var(--Cbackground);
   font-size: 16px;
+  font-family: 'Segoe UI'!important;
 }
 
 @media screen and (max-width: 600px) {
   html {
     font-size: 12px;
+    font-family: 'Segoe UI'!important;
   }
 }

@@ -86,6 +86,14 @@
     font-weight: 500;
 }
 
+.Modal__Custom__OpenLikes .Modal_Main_Div .NotLoginError{
+    color: var(--Csecondary);
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px;
+    text-align: center;
+}
+
 .Modal__Custom__OpenLikes .likesList .likeListIndividualDiv{
 	display: flex;
 	align-items: center;
@@ -192,7 +200,6 @@
 }
 
 .Post .info .hashtag{
-	text-decoration: underline;
 	color: var(--Cunderline);
 	cursor: pointer;
 }
@@ -218,6 +225,11 @@
 	width: 30px;
     height: 30px;
     cursor: pointer;
+}
+
+.Post .addComment a.disable{
+	opacity: .3;
+	pointer-events: none;
 }
 
 .Post .addComment input{

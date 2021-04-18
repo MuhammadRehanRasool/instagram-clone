@@ -24,7 +24,6 @@ function Home() {
 		const unSub = auth.onAuthStateChanged((authUser) => {
 			if(authUser){
 				// Logged In
-				console.log(authUser);
 				setUser(authUser);
 			}
 			else{
@@ -101,7 +100,7 @@ function Home() {
 	className="Modal__Custom"
 	>
 		<div>
-			<img id="simple-modal-title" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram Logo"/>
+			<h1 id="simple-modal-title" className="logoText">Instagram Clone</h1>
 			<h2 id="simple-modal-subtitle">{ (wannaLogin)?"Log in":"Sign up" } to see photos and videos from your friends.</h2>
 			<p id="simple-modal-description">
 				{
@@ -119,7 +118,7 @@ function Home() {
 					)
 				}
 				<div className="orDivider">
-					<div class="line"></div><div class="text">or</div><div class="line"></div>
+					<div className="line"></div><div className="text">or</div><div className="line"></div>
 				</div>
 				{
 					(wannaLogin)?(
@@ -165,7 +164,14 @@ function Home() {
       	<div className="postWrapper">
       		{
       			posts.map((post) => {
-      				return(<Post currentUser={user.displayName} key={post.id} postId={post.id} timestamp={post.data.timestamp} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
+      				let currentUser = "";
+      				if(!!user){
+      					currentUser = user.displayName;
+      				}
+      				else{
+  						currentUser = "";
+      				}
+      				return(<Post currentUser={currentUser} key={post.id} postId={post.id} timestamp={post.data.timestamp} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
       			})
       		}
       	</div>

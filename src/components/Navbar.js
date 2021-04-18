@@ -6,7 +6,7 @@ function Navbar() {
   	<>
   		<GithubReference/>
 	    <div className="Navbar">
-	      <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram Logo"/>
+	      <h1 className="logoText">Instagram Clone</h1>
 	    </div>
   	</>
   );
