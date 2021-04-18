@@ -3,6 +3,12 @@
 	margin-top: 7px;
 }
 
+@media screen and (max-width: 600px) {
+  .Comment p{
+	max-width: 100%!important;
+	}
+}
+
 .Comment .username,
 .Comment p,
 .Comment{

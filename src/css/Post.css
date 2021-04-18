@@ -18,6 +18,9 @@
   .Home .addComment{
   	display: none!important;
   }
+  .Post .info p{
+	max-width: 100%!important;
+	}
 }
 
 .Post .header{
@@ -38,6 +41,65 @@
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
+}
+
+.Modal__Custom__OpenLikes .likesList img{
+	margin-right: 5px;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.Modal__Custom__OpenLikes .likesList{
+	padding: 10px 10px 10px 25px;
+	max-height: 60vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Modal__Custom__OpenLikes .Modal_Main_Div{
+	width: 100%;
+	border-radius: 12px;
+}
+
+.Modal__Custom__OpenLikes .Modal_Main_Div .likesListLabel{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px;
+    border-bottom: 1px solid var(--Cborder);
+}
+
+.Modal__Custom__OpenLikes .Modal_Main_Div .likesListLabel .closeButton{
+    cursor: pointer;
+}
+
+.Modal__Custom__OpenLikes .Modal_Main_Div .likesListLabel h1{
+    color: var(--Cprimary);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.Modal__Custom__OpenLikes .likesList .likeListIndividualDiv{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 5px 0px;
+}
+
+.Modal__Custom__OpenLikes .likesList .likeListIndividualDiv p{
+	font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 5px;
+    color: var(--Cprimary);
 }
 
 .Post .header .header1 .header1__wrapper{
@@ -85,6 +147,14 @@
 	justify-content: space-between;
 }
 
+.Post .footer .icons .iconsSide1 svg:first-child {
+  margin-left: 0px!important;
+}
+
+.Post .footer .icons .iconsSide2 svg:first-child {
+  margin-right: 0px!important;
+}
+
 .Post .footer .icons svg{
 	margin: 0px 8px;
 	cursor: pointer;
@@ -97,12 +167,14 @@
 
 .Post .info .username,
 .Post .info p,
-.Post .seeMore{
+.Post .seeMore,
+.Post .likesCounter span{
 	color: var(--Cprimary);
 	font-size: 14px;
 }
 
-.Post .info .username{
+.Post .info .username,
+.Post .likesCounter span{
 	font-weight: 600;
 	display: inline-block;
 }
@@ -163,4 +235,29 @@
 	text-decoration: none;
 	color:#0095F6;
 	font-weight: 700;
+}
+
+.Post .likesCounter{
+	cursor: pointer;
+}
+
+.Modal__Custom__OpenLikes{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Modal__Custom__OpenLikes > div{
+	background-color: var(--Ccard);
+	border-radius: 3px;
+	color: var(--Cprimary);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+    width: 100%;
+}
+
+.Modal__Custom__OpenLikes > div:focus{
+	outline: none;
 }
