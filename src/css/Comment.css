@@ -1,0 +1,34 @@
+.Comment{
+	display: flex;
+	margin-top: 7px;
+}
+
+.Comment .username,
+.Comment p,
+.Comment{
+	color: var(--Cprimary);
+	font-size: 14px;
+}
+
+.Comment .username{
+	font-weight: 600;
+	display: inline-block;
+}
+
+.Comment .username:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.Comment p{
+	max-width: 60%;
+	overflow-wrap: break-word;
+	/*max-height: 40px;
+    overflow-y: hidden;*/
+}
+
+.Comment .hashtag{
+	text-decoration: underline;
+	color: var(--Cunderline);
+	cursor: pointer;
+}

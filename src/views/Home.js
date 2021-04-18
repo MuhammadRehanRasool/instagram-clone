@@ -1,14 +1,15 @@
 import './../css/Home.css';
 import Navbar from './../components/Navbar';
+import AddPost from './../components/AddPost';
 import Post from './../components/Post';
 import {useEffect, useState} from 'react';
 import Modal from '@material-ui/core/Modal';
-import SendIcon from '@material-ui/icons/Send';
 import {db, auth} from "./../js/firebase.js";
 function Home() {
 	const [posts, setPosts] = new useState([]);
 	useEffect(() => {
 		db.collection('posts')
+		.orderBy('timestamp','desc')
 		.onSnapshot((snapshot) => {
 			setPosts(snapshot.docs.map(doc => ({id:doc.id, data:doc.data()})));
 		});
@@ -36,6 +37,8 @@ function Home() {
 		}
 	},[user, Username]);
 	const onSignUp = (e) => {
+		e.target.classList.add("disable");
+		e.target.innerText = "Hold on...";
 		e.preventDefault();
 		if(!!Username && !!Email && !!Password && Email.includes("@")){
 			auth.createUserWithEmailAndPassword(Email, Password)
@@ -51,9 +54,13 @@ function Home() {
 				setError(error.message);
 			})
 		}
+		e.target.classList.remove("disable");
+		e.target.innerText = "Sign up";
 	}
 
 	const onLogIn = (e) => {
+		e.target.classList.add("disable");
+		e.target.innerText = "Hold on...";
 		e.preventDefault();
 		auth.signInWithEmailAndPassword(Email, Password)
 		.then(() => {
@@ -64,9 +71,26 @@ function Home() {
 		.catch((error) => {
 			setError(error.message);
 		});
+		e.target.classList.remove("disable");
+		e.target.innerText = "Log in";
 	}
 
 	const [wannaLogin, setWannaLogin] = new useState(false);
+	const [wannaPost, setWannaPost] = new useState(false);
+
+	const handleAddPost = (e) => {
+		e.preventDefault();
+		if(wannaPost){
+			setWannaPost(false);
+			e.target.innerText = "+ Add Post";
+			e.target.classList.remove("warning-bg");
+		}
+		else{
+			setWannaPost(true);
+			e.target.innerText = "Cancel Post";
+			e.target.classList.add("warning-bg");
+		}
+	}
 
   return (
     <div className="Home">
@@ -122,16 +146,26 @@ function Home() {
       <div className="contentWrapper">
 		{
 			(user)?(
-					<div className="actionButton">
-						<button type="submit" onClick={() => { auth.signOut() }}>Logout</button>
-					</div>
+					<>
+						<div className="actionButton">
+							<h1><span>Welcome</span> @{user.displayName}!</h1>
+							<div className="buttonWrapper">
+								<button id="AddPostButton" type="submit" onClick={handleAddPost}>+ Add Post</button>
+								<button type="submit" onClick={() => { auth.signOut() }}>Logout</button>
+							</div>
+						</div>
+						{
+							(wannaPost)?(
+								<AddPost setWannaPost={setWannaPost} username={user.displayName}/>
+							):""
+						}
+					</>
 			):""
 		}
       	<div className="postWrapper">
-      		<Post by="rehan.sathio" location="Karachi, Pakistan" caption={`deniz kenarı tek şifadır ✨`} profilePic="https://instagram.fkhi16-1.fna.fbcdn.net/v/t51.2885-19/s150x150/164408250_369115637483490_8067562922456666063_n.jpg?tp=1&_nc_ht=instagram.fkhi16-1.fna.fbcdn.net&_nc_ohc=JO6h6qEabzMAX8aK_AC&edm=ABfd0MgBAAAA&ccb=7-4&oh=e8dee5770c40f477d7cc5da0d67d9398&oe=60A1CA17&_nc_sid=7bff83" image="https://instagram.fkhi16-1.fna.fbcdn.net/v/t51.2885-15/e35/134771242_2699555540356635_4290071383274139042_n.jpg?tp=1&_nc_ht=instagram.fkhi16-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=MWjE59ztyDMAX_9CpVE&edm=AP_V10EBAAAA&ccb=7-4&oh=3edd5bc058ae4b25ba4f8e46a8c90dd8&oe=609FF855&_nc_sid=4f375e"/>
       		{
       			posts.map((post) => {
-      				return(<Post key={post.id} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
+      				return(<Post currentUser={user.displayName} key={post.id} postId={post.id} timestamp={post.data.timestamp} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
       			})
       		}
       	</div>

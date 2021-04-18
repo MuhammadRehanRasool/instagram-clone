@@ -1,0 +1,96 @@
+
+.AddPost{
+	width: 100%;
+    background-color: var(--Ccard);
+    border: 1px solid var(--Cborder);
+    border-radius: 3px;
+    margin: 0px 0px 2rem 0px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddPost p{
+	font-size: 14px;
+	color: #ed4956;
+	text-align: center;
+	margin: 5px 0px;
+}
+
+.AddPost input{
+	font-size: 12px;
+	background-color: var(--Cbackground);
+	outline: none;
+	padding: 9px 0 7px 8px;
+    text-overflow: ellipsis;
+    color: var(--Cprimary);
+    border: 1px solid var(--Cborder);
+    border-radius: 3px;
+    margin-bottom: 6px;
+    width: 250px;
+}
+
+.AddPost input:focus{
+	border: 1px solid #a8a8a8;
+}
+
+.AddPost .inputWrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.AddPost span{
+	font-size: 1rem;
+	color: var(--Csecondary);
+	margin-bottom: 5px;
+}
+
+.AddPost .inputWrapper button{
+	width: fit-content;
+}
+
+.AddPost .inputWrapper input[type="file"]{
+	display: none;
+}
+
+.AddPost .inputWrapper .custom-file-upload{
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.AddPost .inputWrapper .custom-file-upload img{
+	width: 100%;
+	transition: 900ms;
+}
+
+.AddPost .inputWrapper .custom-file-upload p{
+	position: absolute;
+	background-color: #0095f6;
+	color: white;
+	font-weight: 500;
+    padding: 5px 9px;
+	border-radius: 4px;
+	opacity: 0;
+	transition: 900ms;
+}
+
+.AddPost .inputWrapper progress{
+	width: 250px;
+    margin-bottom: 5px;
+}
+
+.AddPost .inputWrapper .custom-file-upload:hover img{
+    filter: grayscale(10) blur(1px);
+    transition: 900ms;
+}
+.AddPost .inputWrapper .custom-file-upload:hover p{
+	opacity: 1;
+	transition: 900ms;
+}

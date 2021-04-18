@@ -1,16 +1,64 @@
 import './../css/Post.css';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import {useState, useEffect} from 'react';
+import {db} from "./../js/firebase.js";
+import firebase from 'firebase';
+import Comment from './Comment';
 
 function Post(props) {
+      const [comments, setComments] = new useState([]);
+      const [singleComment, setSingleComment] = new useState("");
+      useEffect(() => {
+            let unsub;
+            if(props.postId){
+                  unsub = db
+                  .collection("posts")
+                  .doc(props.postId)
+                  .collection("comments")
+                  .orderBy('timestamp','asc')
+                  .onSnapshot((snapshot) => {
+                        setComments(snapshot.docs.map((doc) => ({id:doc.id, data:doc.data()})));
+                  });
+            }
+            return () => {
+                  unsub();
+            }
+      },[props.postId]);
+      TimeAgo.addLocale(en);
 	const polishDesc = (text) => {
 		return text.split(" ");
 	}
+      const takeoutTimeAgo = (time) => {
+            let date = new Date(time.seconds * 1000);
+            const timeAgo = new TimeAgo('en-US');
+            let timeFinal = timeAgo.format(date);
+            return timeFinal;
+      }
+      const handlePostCommentEnter = (e) => {
+            if(e.key === 'Enter'){
+                  handlePostComment(e);
+            }
+      }
+      const handlePostComment = (e) => {
+            e.preventDefault();
+            db
+            .collection("posts")
+            .doc(props.postId)
+            .collection("comments")
+            .add({
+                  by:props.currentUser,
+                  comment:singleComment,
+                  timestamp:firebase.firestore.FieldValue.serverTimestamp()
+            });
+            setSingleComment("");
+      }
   return (
     <div className="Post">
       <div className="header">
       	<div className="header1">
-      		<img src={props.profilePic} alt={`${props.by} Profile Picture`}/>
+      		<img src={(!!props.profilePic)?(props.profilePic):"https://i.pinimg.com/474x/a0/4d/84/a04d849cf591c2f980548b982f461401.jpg"} alt={`${props.by} Profile`}/>
       		<div className="header1__wrapper">
       			<h1>{props.by}</h1>
       			<p>{props.location}</p>
@@ -21,7 +69,7 @@ function Post(props) {
       	</div>
       </div>
       <div className="image">
-      	<img src={props.image} alt={`${props.by} Image`}/>
+      	<img src={props.image} alt={`${props.by} Post`}/>
       </div>
       <div className="footer">
       	<div className="icons">
@@ -42,13 +90,23 @@ function Post(props) {
 	return (<span>{word} </span>);
 }) }</p>
       	</div>
+            <div className="commentsWrapper">
+                  {
+                        comments.map((comment) => {
+                              return(<Comment key={comment.id} by={comment.data.by} comment={comment.data.comment} polishDesc={polishDesc} />)
+                        })
+                  }
+            </div>
       	<div className="time">
-      		21 Hours Ago
+      		{     (!!props.timestamp)?(
+                              takeoutTimeAgo(props.timestamp)
+                        ):""
+                  }
       	</div>
-      	<div className="addComment">
+      	<div className="addComment" onKeyPress={handlePostCommentEnter}>
       		<svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24"><path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z"></path><path d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z"></path></svg>
-      		<input type="text" placeholder="Add a comment..."/>
-      		<a href="#!">Post</a>
+      		<input type="text" value={singleComment} onChange={(e) => { setSingleComment(e.target.value) }} placeholder="Add a comment..."/>
+      		<a href="#!" onClick={handlePostComment}>Post</a>
       	</div>
       </div>
     </div>

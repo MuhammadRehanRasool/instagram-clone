@@ -75,7 +75,8 @@
 }
 
 .Modal__Custom #simple-modal-description button,
-.Home .actionButton button{
+.Home .actionButton button,
+.AddPost .inputWrapper button{
 	margin-top: 8px;
 	border: 1px solid transparent;
     background-color: #0095f6;
@@ -89,6 +90,7 @@
     text-transform: inherit;
     text-overflow: ellipsis;
     color: var(--Ccard);
+    transition: 900ms;
 }
 
 .Modal__Custom #simple-modal-description button.disable{
@@ -96,7 +98,8 @@
 	opacity: .3;
 }
 
-.Modal__Custom #simple-modal-description button:focus{
+.Modal__Custom #simple-modal-description button:focus,
+.Home .actionButton button:focus{
 	outline: none;
 }
 
@@ -149,10 +152,35 @@
     margin: 0px 0px 2rem 0px;
     padding: 1rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .Home .actionButton button{
+	white-space: nowrap;
 	display: inline-block;
-	width: 20%;
-	margin:0 auto;
+	width: fit-content;
+	margin: 0px 5px;
+}
+
+.Home .actionButton .buttonWrapper{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.Home .actionButton .buttonWrapper .warning-bg{
+	background-color: #ed4956;
+}
+
+.Home .actionButton h1{
+	font-size: 1rem;
+	font-weight: 300;
+	color: var(--Cprimary);
+}
+
+.Home .actionButton span{
+	font-size: 1rem;
+	color: var(--Csecondary);
 }
