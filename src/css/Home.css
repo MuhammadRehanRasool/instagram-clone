@@ -9,6 +9,12 @@
 	
 }
 
+@media screen and (max-width: 600px) {
+  .Home .actionButton{
+  	margin: 0px!important;
+  }
+}
+
 
 .Modal__Custom{
 	display: flex;
@@ -93,10 +99,12 @@
     transition: 900ms;
 }
 
-.Modal__Custom #simple-modal-description button.disable{
+.Modal__Custom #simple-modal-description button.disable,
+.Modal__Custom #simple-modal-description button.disableWhile{
 	pointer-events: none;
 	opacity: .3;
 }
+
 
 .Modal__Custom #simple-modal-description button:focus,
 .Home .actionButton button:focus{

@@ -15,11 +15,11 @@
   .Home .contentWrapper{
   	margin-top: 0px!important;
   }
-  .Home .addComment{
-  	display: none!important;
-  }
   .Post .info p{
 	max-width: 100%!important;
+	}
+	.Modal__Custom__OpenLikes .likesList{
+		padding: 10px!important;
 	}
 }
 

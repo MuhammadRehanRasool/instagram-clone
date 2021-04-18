@@ -211,7 +211,15 @@ function Post(props) {
       		</div>
       	</div>
             <div className="likesCounter">
-                  <p><span onClick={() => { setOpenLikes(true) }}>{likes.length} likes</span></p>
+                  <p><span onClick={() => { setOpenLikes(true) }}>{
+                        (likes.length === 1)?(
+                              likes.length+" like"
+                        ):(likes.length > 1)?(
+                              likes.length+" likes"
+                        ):(
+                              ""
+                        )
+                  }</span></p>
             </div>
       	<div className="info">
       		<p><span className="username">{props.by}</span> { polishDesc(props.caption).map((word) => {

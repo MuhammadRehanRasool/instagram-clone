@@ -36,7 +36,7 @@ function Home() {
 		}
 	},[user, Username]);
 	const onSignUp = (e) => {
-		e.target.classList.add("disable");
+		e.target.classList.add("disableWhile");
 		e.target.innerText = "Hold on...";
 		e.preventDefault();
 		if(!!Username && !!Email && !!Password && Email.includes("@")){
@@ -53,12 +53,10 @@ function Home() {
 				setError(error.message);
 			})
 		}
-		e.target.classList.remove("disable");
-		e.target.innerText = "Sign up";
 	}
 
 	const onLogIn = (e) => {
-		e.target.classList.add("disable");
+		e.target.classList.add("disableWhile");
 		e.target.innerText = "Hold on...";
 		e.preventDefault();
 		auth.signInWithEmailAndPassword(Email, Password)
@@ -70,11 +68,9 @@ function Home() {
 		.catch((error) => {
 			setError(error.message);
 		});
-		e.target.classList.remove("disable");
-		e.target.innerText = "Log in";
 	}
 
-	const [wannaLogin, setWannaLogin] = new useState(false);
+	const [wannaLogin, setWannaLogin] = new useState(true);
 	const [wannaPost, setWannaPost] = new useState(false);
 
 	const handleAddPost = (e) => {
@@ -112,9 +108,9 @@ function Home() {
 				<input value={Password} placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} type="password"/>
 				{
 					(wannaLogin)?(
-						<button type="submit" className={(!!Email && !!Password && Email.includes("@"))?"":"disable"} onClick={onLogIn}>Log in</button>
+						<button id="loginButton" type="submit" className={(!!Email && !!Password && Email.includes("@"))?"":"disable"} onClick={onLogIn}>Log in</button>
 					):(
-						<button type="submit" className={(!!Username && !!Email && !!Password && Email.includes("@"))?"":"disable"} onClick={onSignUp}>Sign up</button>
+						<button id="signupButton" type="submit" className={(!!Username && !!Email && !!Password && Email.includes("@"))?"":"disable"} onClick={onSignUp}>Sign up</button>
 					)
 				}
 				<div className="orDivider">
