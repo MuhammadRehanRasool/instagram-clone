@@ -159,16 +159,18 @@ function Home() {
 		}
       	<div className="postWrapper">
       		{
-      			posts.map((post) => {
-      				let currentUser = "";
-      				if(!!user){
-      					currentUser = user.displayName;
-      				}
-      				else{
-  						currentUser = "";
-      				}
-      				return(<Post currentUser={currentUser} key={post.id} postId={post.id} timestamp={post.data.timestamp} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
-      			})
+      			(authUser)?(
+      				posts.map((post) => {
+	      				let currentUser = "";
+	      				if(!!user){
+	      					currentUser = user.displayName;
+	      				}
+	      				else{
+	  						currentUser = "";
+	      				}
+	      				return(<Post currentUser={currentUser} key={post.id} postId={post.id} timestamp={post.data.timestamp} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
+	      			})
+      			):("")
       		}
       	</div>
       </div>
