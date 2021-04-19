@@ -101,7 +101,7 @@ function Home() {
 			<p id="simple-modal-description">
 				{
 					(!wannaLogin)?(
-							<input value={Username} placeholder="Username" onChange={(e) => { setUsername(e.target.value) }} type="text"/>
+							<input value={Username} placeholder="Username" onChange={(e) => { setUsername(e.target.value.trim().toLowerCase()) }} type="text"/>
 					):""
 				}
 				<input value={Email} placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} type="email"/>
@@ -110,7 +110,7 @@ function Home() {
 					(wannaLogin)?(
 						<button id="loginButton" type="submit" className={(!!Email && !!Password && Email.includes("@"))?"":"disable"} onClick={onLogIn}>Log in</button>
 					):(
-						<button id="signupButton" type="submit" className={(!!Username && !!Email && !!Password && Email.includes("@"))?"":"disable"} onClick={onSignUp}>Sign up</button>
+						<button id="signupButton" type="submit" className={(!!Username && !!Email && !!Password && Email.includes("@") && (Username.length>=3))?"":"disable"} onClick={onSignUp}>Sign up</button>
 					)
 				}
 				<div className="orDivider">
@@ -140,10 +140,12 @@ function Home() {
       <Navbar/>
       <div className="contentWrapper">
 		{
-			(user)?(
+			(!!user)?(
 					<>
 						<div className="actionButton">
-							<h1><span>Welcome</span> @{user.displayName}!</h1>
+							<h1><span>Welcome</span> @{
+								(!!user.displayName)?(user.displayName):(Username)
+							}!</h1>
 							<div className="buttonWrapper">
 								<button id="AddPostButton" type="submit" onClick={handleAddPost}>+ Add Post</button>
 								<button type="submit" onClick={() => { auth.signOut() }}>Logout</button>
@@ -162,11 +164,11 @@ function Home() {
       			(!!user)?(
       				posts.map((post) => {
 	      				let currentUser = "";
-	      				if(!!user){
+	      				if(!!user.displayName){
 	      					currentUser = user.displayName;
 	      				}
 	      				else{
-	  						currentUser = "";
+	  						currentUser = Username;
 	      				}
 	      				return(<Post currentUser={currentUser} key={post.id} postId={post.id} timestamp={post.data.timestamp} by={post.data.by} location={post.data.location} caption={post.data.caption} profilePic={post.data.profilePic} image={post.data.image}/>)
 	      			})
